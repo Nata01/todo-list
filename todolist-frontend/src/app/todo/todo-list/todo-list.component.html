@@ -1,3 +1,7 @@
-<p>
-  todo-list works!
-</p>
+<ol *ngIf="todos; else todosNotLoadedYet">
+  <li *ngFor="let todo of todos">{{todo.description}}</li>
+</ol>
+
+<ng-template #todosNotLoadedYet>
+  Loading...
+</ng-template>
