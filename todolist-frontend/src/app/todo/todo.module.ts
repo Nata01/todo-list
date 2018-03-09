@@ -6,6 +6,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {TodoDetailComponent} from './todo-detail/todo-detail.component';
 import {HttpClientModule} from '@angular/common/http';
 import {TodoListResolver} from './todo-list.resolver';
+import {TodoListPageComponent} from './todo-list-page/todo-list-page.component';
 
 @NgModule({
   imports: [
@@ -13,12 +14,12 @@ import {TodoListResolver} from './todo-list.resolver';
     RouterModule,
     HttpClientModule,
   ],
-  declarations: [TodoListComponent, TodoListItemComponent, TodoDetailComponent],
+  declarations: [TodoListComponent, TodoListItemComponent, TodoDetailComponent, TodoListPageComponent],
   providers: [TodoListResolver]
 })
 export class TodoModule {
   static routes: Routes = [
-    {path: 'todo-list', component: TodoListComponent, resolve: {pagedTodos: TodoListResolver}},
+    {path: 'todo-list', component: TodoListPageComponent, resolve: {pagedTodos: TodoListResolver}},
     {path: 'todo-list/:id', component: TodoDetailComponent},
   ];
 }
