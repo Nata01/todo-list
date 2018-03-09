@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {PagedResponse} from '../../paged-response';
 import {Todo} from '../todo';
 import 'rxjs/add/operator/map';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
@@ -12,13 +12,12 @@ import 'rxjs/add/operator/map';
 export class TodoListComponent implements OnInit {
   todos: Todo[];
 
-  constructor(private http: HttpClient) {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.http.get<PagedResponse<Todo>>('/api/todos')
-      .map(res => res.content)
-      .subscribe(todos => this.todos = todos);
+    const todos: PagedResponse<Todo> = this.route.snapshot.data.pagedTodos;
+    this.todos = todos.content;
   }
 
 }

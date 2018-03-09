@@ -1,7 +1,3 @@
-<ol *ngIf="todos; else todosNotLoadedYet">
+<ol>
   <li *ngFor="let todo of todos">{{todo.description}}</li>
 </ol>
-
-<ng-template #todosNotLoadedYet>
-  Loading...
-</ng-template>
