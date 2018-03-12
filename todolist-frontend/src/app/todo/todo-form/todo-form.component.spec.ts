@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {TodoListCreatePageComponent} from './todo-list-create-page.component';
+import {TodoFormComponent} from './todo-form.component';
 
-describe('TodoListCreatePageComponent', () => {
-  let component: TodoListCreatePageComponent;
-  let fixture: ComponentFixture<TodoListCreatePageComponent>;
+describe('TodoFormComponent', () => {
+  let component: TodoFormComponent;
+  let fixture: ComponentFixture<TodoFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TodoListCreatePageComponent]
+      declarations: [TodoFormComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TodoListCreatePageComponent);
+    fixture = TestBed.createComponent(TodoFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

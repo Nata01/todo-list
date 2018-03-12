@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-// TODO: rename me please: TodoFormComponent
 @Component({
-  selector: 'app-todo-list-form',
-  templateUrl: './todo-list-form.component.html',
-  styleUrls: ['./todo-list-form.component.css']
+  selector: 'app-todo-form',
+  templateUrl: './todo-form.component.html',
+  styleUrls: ['./todo-form.component.css']
 })
-export class TodoListFormComponent implements OnInit {
+export class TodoFormComponent implements OnInit {
   todoForm: FormGroup;
 
   constructor(private fb: FormBuilder) {

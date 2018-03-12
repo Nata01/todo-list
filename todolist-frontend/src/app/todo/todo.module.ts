@@ -7,8 +7,8 @@ import {TodoDetailComponent} from './todo-detail/todo-detail.component';
 import {HttpClientModule} from '@angular/common/http';
 import {TodoListResolver} from './todo-list.resolver';
 import {TodoListPageComponent} from './todo-list-page/todo-list-page.component';
-import {TodoListFormComponent} from './todo-list-form/todo-list-form.component';
-import {TodoListCreatePageComponent} from './todo-list-create-page/todo-list-create-page.component';
+import {TodoFormComponent} from './todo-form/todo-form.component';
+import {TodoCreatePageComponent} from './todo-create-page/todo-create-page.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
@@ -23,15 +23,15 @@ import {ReactiveFormsModule} from '@angular/forms';
     TodoListItemComponent,
     TodoDetailComponent,
     TodoListPageComponent,
-    TodoListFormComponent,
-    TodoListCreatePageComponent
+    TodoFormComponent,
+    TodoCreatePageComponent
   ],
   providers: [TodoListResolver]
 })
 export class TodoModule {
   static routes: Routes = [
     {path: 'todo-list', component: TodoListPageComponent, resolve: {pagedTodos: TodoListResolver}},
-    {path: 'todo/create', component: TodoListCreatePageComponent},
+    {path: 'todo/create', component: TodoCreatePageComponent},
     {path: 'todo/:id', component: TodoDetailComponent},
   ];
 }
