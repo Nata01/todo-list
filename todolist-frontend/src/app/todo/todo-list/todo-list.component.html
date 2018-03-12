@@ -1,6 +1,5 @@
 <a routerLink='/todo/create'>
   <button class="btn btn-primary">New todo</button>
 </a>
-<ol>
-  <li *ngFor="let todo of todos">{{todo.description}}</li>
-</ol>
+
+<app-todo-list-item *ngFor="let t of todos" [todo]="t" (removeClick)="onItemRemove($event)"></app-todo-list-item>

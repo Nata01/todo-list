@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Todo} from '../todo';
 
 @Component({
@@ -9,4 +9,13 @@ import {Todo} from '../todo';
 export class TodoListComponent {
   @Input()
   todos: Todo[];
+
+  @Output()
+  removeTodo = new EventEmitter();
+
+  onItemRemove(todo: Todo) {
+    this.removeTodo.next(todo);
+    this.todos.splice(this.todos.indexOf(todo), 1);
+  }
+
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Todo} from '../todo';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -6,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-list-item.component.css']
 })
 export class TodoListItemComponent implements OnInit {
+  @Input()
+  todo: Todo;
 
-  constructor() { }
+  @Output()
+  removeClick = new EventEmitter();
+
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit() {
   }

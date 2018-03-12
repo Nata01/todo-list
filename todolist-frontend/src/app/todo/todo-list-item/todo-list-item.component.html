@@ -1,3 +1,5 @@
-<p>
-  todo-list-item works!
-</p>
+<div>
+  {{todo.description}}
+  <a [routerLink]="['/todo', todo.id, 'edit']"><i class="fa fa-pencil-square-o" style="color: orange"></i></a>
+  <i class="fa fa-trash-o" style="color: grey" (click)="removeClick.next(todo)"></i>
+</div>
