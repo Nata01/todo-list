@@ -16,7 +16,7 @@ export class TodoCreatePageComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit(createForm) {
+  createTodo(createForm) {
     this.http.post('/api/todos', createForm)
       .toPromise()
       .then(() => {
