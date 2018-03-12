@@ -1,7 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-todo-form',
@@ -9,11 +7,12 @@ import {Router} from '@angular/router';
   styleUrls: ['./todo-form.component.css']
 })
 export class TodoFormComponent implements OnInit {
+  @Output()
+  formFilled = new EventEmitter<any>();
+
   todoForm: FormGroup;
 
-  constructor(private fb: FormBuilder,
-              private http: HttpClient,
-              private router: Router) {
+  constructor(private fb: FormBuilder) {
     this.todoForm = fb.group({
       description: ['', Validators.required]
     });
@@ -24,11 +23,7 @@ export class TodoFormComponent implements OnInit {
 
   onSubmit() {
     if (this.todoForm.valid) {
-      this.http.post('/api/todos', this.todoForm.value)
-        .toPromise()
-        .then(() => {
-          this.router.navigate(['/todo-list']);
-        });
+      this.formFilled.next(this.todoForm.value);
     } else {
       console.error('Form is not valid!');
     }

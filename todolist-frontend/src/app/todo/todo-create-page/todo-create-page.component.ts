@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-todo-create-page',
@@ -7,10 +9,18 @@ import {Component, OnInit} from '@angular/core';
 })
 export class TodoCreatePageComponent implements OnInit {
 
-  constructor() {
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
 
   ngOnInit() {
   }
 
+  submit(createForm) {
+    this.http.post('/api/todos', createForm)
+      .toPromise()
+      .then(() => {
+        this.router.navigate(['/todo-list']);
+      });
+  }
 }
