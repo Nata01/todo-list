@@ -15,6 +15,7 @@ export class TodoFormComponent implements OnInit {
   todo?: Todo;
 
   todoForm: FormGroup;
+  clicked = false;
 
   constructor(private fb: FormBuilder) {
     this.todoForm = fb.group({
@@ -32,6 +33,8 @@ export class TodoFormComponent implements OnInit {
   onSubmit() {
     if (this.todoForm.valid) {
       this.formFilled.next(this.todoForm.value);
+      // Todo: this should be in up level component
+      this.clicked = true;
     } else {
       console.error('Form is not valid!');
     }
